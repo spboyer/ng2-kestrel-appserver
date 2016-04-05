@@ -13,7 +13,7 @@
         },
         "Microsoft.Extensions.Logging.Console": "1.0.0-*",
         "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-*",
-        "Microsoft.AspNetCore.Mvc.Core": "1.0.0-*",
+        "Microsoft.AspNetCore.Mvc": "1.0.0-*",
         "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.0-*",
         "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-*",
         "System.Runtime.Serialization.Primitives": "4.1.1-*",
