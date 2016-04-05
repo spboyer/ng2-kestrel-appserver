@@ -23,8 +23,6 @@ namespace ng2_kestrel_appserver
         {
             loggerFactory.AddConsole(LogLevel.Debug);
 
-
-
             /// http://docs.asp.net/en/latest/fundamentals/static-files.html
             // need to write a middleware piece potentially and read up more here
             DefaultFilesOptions options = new DefaultFilesOptions();
@@ -33,18 +31,6 @@ namespace ng2_kestrel_appserver
             app.UseDefaultFiles(options);
             app.UseStaticFiles();
 
-            //app.UseIISPlatformHandler();
-
-            /*            app.UseMvc(routes =>
-                         {
-                            TODO: NEED Fallback routes
-                            // 404 routingfor SPA
-                            routes.MapRoute("spa-fallback", "{*anything}", new { controller = "Home", action = "Index" });
-
-                         });*/
         }
-
-        // Entry point for the application.
-        //public static void Main(string[] args) => Microsoft.AspNet.Hosting.WebApplication.Run<Startup>(args);
     }
 }
