@@ -12,5 +12,12 @@ Install the dotnet-cli & SDK from https://github.com/dotnet/cli#installers-and-b
 * dotnet run
 ```
 
+Option to run the app with `nodemon` to develop and auto refresh the .NET portions
+```
+* npm install
+* npm start
+```
 
+This watches all `*.cs` files and will auto restart the application.  If you add any new
+dependencies in the `project.json` file; a stop `dotnet restore` is required.
 
