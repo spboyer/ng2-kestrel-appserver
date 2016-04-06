@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 
 namespace ng2_kestrel_appserver
 {
@@ -27,11 +28,12 @@ public Startup(IHostingEnvironment env)
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-
+            // Map the #SpaSettings section to the <see cref=SpaSettings /> class
+            services.Configure<SpaSettings>(Configuration.GetSection("SpaSettings"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IOptions<SpaSettings> spaSettings)
         {
             loggerFactory.AddConsole(LogLevel.Debug);
 
@@ -39,14 +41,13 @@ public Startup(IHostingEnvironment env)
             {
                 app.UseDeveloperExceptionPage();
             }
-            /// http://docs.asp.net/en/latest/fundamentals/static-files.html
+
             app.UseDefaultFiles();
-            app.UseStaticFiles();
-            ConfigureRoutes(app);
+            ConfigureRoutes(app, spaSettings.Value);
 
         }
 
-        private void ConfigureRoutes(IApplicationBuilder app)
+        private void ConfigureRoutes(IApplicationBuilder app, SpaSettings spaSettings)
         {
             // If the route contains '.' then assume a file to be served
             // and try to serve using StaticFiles
@@ -59,7 +60,7 @@ public Startup(IHostingEnvironment env)
             spa => {
                 spa.Use((context, next) =>
                 {
-                    context.Request.Path = new PathString("/index.html");
+                    context.Request.Path = new PathString("/" + spaSettings.DefaultPage);
                     return next();
                 });
 
