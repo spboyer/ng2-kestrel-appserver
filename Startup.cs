@@ -43,6 +43,7 @@ public Startup(IHostingEnvironment env)
             }
 
             app.UseDefaultFiles();
+            app.UseStaticFiles();
             ConfigureRoutes(app, spaSettings.Value);
 
         }
