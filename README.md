@@ -1,7 +1,7 @@
 ### ng2-kestrel-appserver
 
 ####Static Web Server for Angular 2
-
+Blog post here: http://www.tattoocoder.com/kestrel-as-a-static-server-for-angular/
 
 Install the dotnet-cli & SDK from https://github.com/dotnet/cli#installers-and-binaries
 
