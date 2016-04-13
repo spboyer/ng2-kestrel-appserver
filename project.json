@@ -11,6 +11,7 @@
             "type": "platform",
             "version": "1.0.0-rc2-23931"
         },
+        "NETStandard.Library":"1.0.0-rc3-*",
         "Microsoft.Extensions.Logging.Console": "1.0.0-*",
         "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-*",
         "Microsoft.AspNetCore.Mvc": "1.0.0-*",
