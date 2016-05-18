@@ -1,5 +1,8 @@
 ### ng2-kestrel-appserver
 
+Updated for RC2
+Get ASP.NET RC2 @ http://dot.net
+
 ####Static Web Server for Angular 2
 Blog post here: http://www.tattoocoder.com/kestrel-as-a-static-server-for-angular/
 
