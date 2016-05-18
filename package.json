@@ -8,6 +8,6 @@
     "gulp-cli": "1.2.1"
 },
 "scripts": {
-     "start" : "nodemon --ignore htm,html,js,json --ignore obj/ --ignore bin/ --ext cs --delay 1000ms --exec \"dotnet run ASPNET_ENV=Development\" -V"
+     "start" : "nodemon --ignore htm,html,js,json --ignore obj/ --ignore bin/ --ext cs --delay 1000ms --exec \"dotnet run ASPNETCORE_ENVIRONMENT=Development\" -V"
    }
 }
