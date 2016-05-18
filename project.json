@@ -1,6 +1,6 @@
 {
     "version": "1.0.0-*",
-    "compilationOptions": {
+    "buildOptions": {
         "emitEntryPoint": true
     },
     "tooling": {
@@ -9,19 +9,28 @@
     "dependencies": {
         "Microsoft.NETCore.App": {
             "type": "platform",
-            "version": "1.0.0-rc2-23931"
+            "version": "1.0.0-rc2-3002702"
         },
-        "NETStandard.Library":"1.0.0-rc3-*",
-        "Microsoft.Extensions.Logging.Console": "1.0.0-*",
-        "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-*",
-        "Microsoft.AspNetCore.Mvc": "1.0.0-*",
-        "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.0-*",
-        "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-*",
+        "Microsoft.AspNetCore.Diagnostics": "1.0.0-rc2-final",
+        "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
+        "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-rc2-final",
+        "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-final",
+        "Microsoft.AspNetCore.StaticFiles": "1.0.0-rc2-final",
+        "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0-rc2-final",
+        "Microsoft.Extensions.Configuration.Json": "1.0.0-rc2-final",
+        "Microsoft.Extensions.Logging": "1.0.0-rc2-final",
+        "Microsoft.Extensions.Logging.Console": "1.0.0-rc2-final",
+        "Microsoft.Extensions.Logging.Debug": "1.0.0-rc2-final",
+        "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.0-rc2-final",
         "System.Runtime.Serialization.Primitives": "4.1.1-*",
-        "Microsoft.AspNetCore.StaticFiles": "1.0.0-*",
-        "Microsoft.AspNetCore.Diagnostics": "1.0.0-*",
-        "Microsoft.AspNetCore.Routing": "1.0.0-*",
-        "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0-*"
+        "Microsoft.AspNetCore.Routing": "1.0.0-rc2-final",
+        "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0-rc2-final"
+    },
+    "tools": {
+        "Microsoft.AspNetCore.Server.IISIntegration.Tools": {
+            "version": "1.0.0-preview1-final",
+            "imports": "portable-net45+wp80+win8+wpa81+dnxcore50"
+        }
     },
     "frameworks": {
         "netcoreapp1.0": {
@@ -30,10 +39,25 @@
             ]
         }
     },
-    "tools": {
-        "dotnet-publish-iis": "1.0.0-*"
+    "runtimeOptions": {
+        "gcServer": true
+    },
+    "publishOptions": {
+        "include": [
+            "wwwroot",
+            "appsettings.json",
+            "web.config"
+        ]
     },
     "scripts": {
-        "postpublish": "dotnet publish-iis --publish-folder %publish:OutputPath%"
+        "prepublish": [
+            "npm install",
+            "bower install",
+            "gulp clean",
+            "gulp min"
+        ],
+        "postpublish": [
+            "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%"
+        ]
     }
 }

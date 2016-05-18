@@ -12,8 +12,6 @@ public class Program
             var host = new WebHostBuilder()
                         .UseKestrel()
                         .UseContentRoot(Directory.GetCurrentDirectory())
-                        .UseDefaultHostingConfiguration(args)
-                        //.UseIIS()
                         .UseStartup<Startup>()
                         .Build();
 
